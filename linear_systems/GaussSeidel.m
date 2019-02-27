@@ -26,9 +26,7 @@ function x = GaussSeidel(A, b, es, maxit)
     ea = zeros(n,1);
     for iter = 1:maxit
         xold = x;
-        for i = 1:n
-            x = d - C*x;
-        end
+        x = d - C*x;
         idx = x == 0;
         ea(idx) = 0;
         ea(~idx) = abs((x(~idx) - xold(~idx))./x(~idx));
