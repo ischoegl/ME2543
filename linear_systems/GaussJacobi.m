@@ -1,4 +1,4 @@
-function x = GaussSeidel(A, b, es, maxit)
+function x = GaussJacobi(A, b, es, maxit)
     % GaussSeidel: Gauss Seidel method
     % x = GaussSeidel(A,b): Gauss Seidel without relaxation
     %
@@ -26,9 +26,7 @@ function x = GaussSeidel(A, b, es, maxit)
     ea = ones(n,1);
     for iter = 1:maxit
         xold = x;
-        for i = 1:n
-            x(i) = d(i) - C(i,:)*x;
-        end
+        x = d - C*x;
         idx = x == 0;
         ea(idx) = 0;
         ea(~idx) = abs((x(~idx) - xold(~idx))./x(~idx));
