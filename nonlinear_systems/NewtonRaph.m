@@ -1,14 +1,14 @@
 function [x, fx] = NewtonRaph(func, J, x0, es, maxit)
-    % newtmult: Newton-Raphson root zeroes nonlinear systems
-    % [x,fx] = NewtonRaph(func,J,x0,es,maxit):
+    % Newton-Raphson root zeroes nonlinear systems
+    % [x,fx] = NewtonRaph(func, J, x0, es, maxit):
     % uses the Newton-Raphson method to find the roots of a system of
     % nonlinear equations
     % input:
     %   func = name of function that returns f
     %   J = name of function that returns the Jacobian matrix
     %   x0 = initial guess
-    %   es = desired percent relative error (default = 0.0001%)
-    %   maxit = maximum allowable iterations (default = 50)
+    %   es = desired percent relative error
+    %   maxit = maximum allowable iterations
     % output:
     %   x = vector of roots
     %   fx = vector of functions evaluated at roots
