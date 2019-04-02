@@ -1,4 +1,4 @@
-function int = trapezoidal(func, a, b, n, varargin)
+function int = trapezoidal(func, a, b, n)
     % trap: composite trapezoidal rule quadrature
     % int = trap(func, a, b, n):
     % Composite trapezoidal rule
