@@ -1,4 +1,4 @@
-function int = trapezoidal(func, a, b, n)
+function I = trapezoidal(func, a, b, n)
     % trap: composite trapezoidal rule quadrature
     % int = trap(func, a, b, n):
     % Composite trapezoidal rule
@@ -19,4 +19,4 @@ function int = trapezoidal(func, a, b, n)
         s = s + 2 * func(x);
     end
     s = s + func(b);
-    int = (b - a) * s / (2 * n);
+    I = (b - a) * s / (2 * n);
