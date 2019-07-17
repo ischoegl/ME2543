@@ -1,4 +1,4 @@
-function [tp,yp] = rk4sys(dydt, tspan, y0, h, varargin)
+function [tp,yp] = rk4sys(dydt, tspan, y0, h)
     % rk4sys: fourth-order Runge-Kutta for a system of ODEs
     % [t,y] = rk4sys(dydt,tspan,y0,h,p1,p2,...): integrates
     % a system of ODEs with fourth-order RK method
@@ -9,13 +9,9 @@ function [tp,yp] = rk4sys(dydt, tspan, y0, h, varargin)
     %   = [t0 t1 ... tf]; specific times where solution output
     %   y0 = initial values of dependent variables
     %   h = step size
-    %   p1,p2,... = additional parameters used by dydt
     % output:
     %   tp = vector of independent variable
     %   yp = vector of solution for dependent variables
-    if nargin < 4
-        error('at least 4 input arguments required')
-    end
     if any(diff(tspan) <= 0)
         error('tspan not ascending order')
     end
@@ -48,13 +44,13 @@ function [tp,yp] = rk4sys(dydt, tspan, y0, h, varargin)
             if tt + hh>tend
                 hh = tend - tt;
             end
-            k1 = dydt(tt, y(i,:), varargin{:})';
+            k1 = dydt(tt, y(i,:))';
             ymid = y(i,:) + k1.*hh./2;
-            k2 = dydt(tt + hh/2, ymid, varargin{:})';
+            k2 = dydt(tt + hh/2, ymid)';
             ymid = y(i,:) + k2*hh/2;
-            k3 = dydt(tt + hh/2, ymid, varargin{:})';
+            k3 = dydt(tt + hh/2, ymid)';
             yend = y(i,:) + k3*hh;
-            k4 = dydt(tt + hh, yend, varargin{:})';
+            k4 = dydt(tt + hh, yend)';
             phi = (k1 + 2*(k2 + k3) + k4)/6;
             y(i+1,:) = y(i,:) + phi*hh;
             tt = tt + hh;

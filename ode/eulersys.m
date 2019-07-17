@@ -1,4 +1,4 @@
-function [tp, yp] = eulersys(dydt, tspan, y0, h, varargin)
+function [tp, yp] = eulersys(dydt, tspan, y0, h)
     % eulsys: Euler's method for a system of ODEs
     % [t,y] = eulsys(dydt,tspan,y0,h): integrates a system of ODEs with
     % Euler's method
@@ -9,13 +9,9 @@ function [tp, yp] = eulersys(dydt, tspan, y0, h, varargin)
     %   = [t0 t1 ... tf]; specific times where solution output
     %   y0 = initial values of dependent variables
     %   h = step size
-    %   p1,p2,... = additional parameters used by dydt
     % output:
     %   tp = vector of independent variable
     %   yp = vector of solution for dependent variables
-    if nargin < 4
-        error('at least 4 input arguments required')
-    end
     if any(diff(tspan) <= 0)
         error('tspan not ascending order')
     end
@@ -48,7 +44,7 @@ function [tp, yp] = eulersys(dydt, tspan, y0, h, varargin)
             if tt + hh > tend
                 hh = tend - tt;
             end
-            phi = dydt(tt, y(i,:), varargin{:})';            
+            phi = dydt(tt, y(i,:))';
             y(i+1,:) = y(i,:) + phi*hh;
             tt = tt+hh;
             i=i+1;

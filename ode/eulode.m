@@ -3,7 +3,7 @@ function [t,y] = eulode(dydt, tspan, y0, h)
     % [t,y] = eulode(dydt, tspan, y0, h):
     % uses Euler's method to integrate an ODE
     % input:
-    %   dydt = name of the M−file that evaluates the ODE
+    %   dydt = name of the ODE function
     %   tspan = [ti, tf]
     %           ti and tf are initial and final values of the ind. variable
     %   y0 = initial value of dependent variable
