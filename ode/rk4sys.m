@@ -21,10 +21,10 @@ function [tp,yp] = rk4sys(dydt, tspan, y0, h)
     if n == 2
         t = (ti:h:tf)';
         n = length(t);
-    if t(n) < tf
-        t(n+1) = tf;
-        n = n+1;
-    end
+        if t(n) < tf
+            t(n+1) = tf;
+            n = n+1;
+        end
     else
         t = tspan;
     end
